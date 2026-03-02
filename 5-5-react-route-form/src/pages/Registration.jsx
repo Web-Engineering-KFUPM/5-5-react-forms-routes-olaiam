@@ -16,10 +16,15 @@ export default function Registration() {
 
     const nextErrors = {};
 
+
     // Email validation
-    if (!email.trim()) nextErrors.email = "Enter a valid email address";
-    else if (!(email.includes("@") && email.endsWith(".com")))
-      nextErrors.email = "Enter a valid email address";
+    if (!email.trim()) {
+      nextErrors.email = "Email is required";
+    } else if (!email.includes("@")) {
+      nextErrors.email = 'Email must contain "@"';
+    } else if (!email.endsWith(".com")) {
+      nextErrors.email = 'Email must end with ".com"';
+    }
 
     // Password validation
     if (!password.trim()) nextErrors.password = "Password is required";
@@ -43,7 +48,7 @@ export default function Registration() {
         Create your portal access. Your email will be used for course updates.
       </p>
 
-      <form onSubmit={handleSubmit} className="card form neon">
+      <form noValidate onSubmit={handleSubmit} className="card form neon">
         <div className="form-row">
           <label htmlFor="email">Email</label>
           <input
