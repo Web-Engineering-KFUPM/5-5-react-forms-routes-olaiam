@@ -3,11 +3,16 @@ import { useState } from "react";
 export default function Registration() {
   const [email, setEmail] = useState("");
 
+  // ✅ add missing states (required)
+  const [password, setPassword] = useState("");
+  const [gender, setGender] = useState("");
+
   const [errors, setErrors] = useState({});
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    {/*Form validations*/}
+
+    /*Form validations*/
 
     const nextErrors = {};
 
@@ -51,12 +56,15 @@ export default function Registration() {
             aria-describedby={errors.email ? "email-error" : undefined}
           />
           {errors.email && (
-            <p id="email-error" className="error">{errors.email}</p>
+            <p id="email-error" className="error">
+              {errors.email}
+            </p>
           )}
         </div>
+
         <div className="form-row">
-           {/*password*/}
-              <div className="form-row">
+          {/*password*/}
+
           <label htmlFor="password">Password</label>
           <input
             id="password"
@@ -73,11 +81,11 @@ export default function Registration() {
             </p>
           )}
         </div>
-        </div>
 
         <fieldset className="form-row">
           {/*Radio Button for gender*/}
-              <legend>Gender</legend>
+
+          <legend>Gender</legend>
 
           <label className="radio">
             <input
@@ -104,8 +112,15 @@ export default function Registration() {
           {errors.gender && <p className="error">{errors.gender}</p>}
         </fieldset>
 
-          {/*Disable the submit button until all requirements met*/}
-        <button type="submit" className="btn">Register</button>
+        {/*Disable the submit button until all requirements met*/}
+
+        <button
+          type="submit"
+          className="btn"
+          disabled={!email || !password || !gender}
+        >
+          Register
+        </button>
       </form>
 
       <div className="card info">

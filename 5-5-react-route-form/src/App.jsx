@@ -145,6 +145,12 @@
 // ================================================================
 
 
+import { NavLink, Routes, Route } from "react-router-dom";
+
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Registration from "./pages/Registration";
+
 export default function App() {
   return (
     <div className="app">
@@ -168,12 +174,10 @@ export default function App() {
 
       <main className="container">
         {/*Routes*/}
-          <Routes>
+        <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/registration" element={<Registration />} />
-
-          {/* 404 */}
           <Route path="*" element={<h2>404 — Not Found</h2>} />
         </Routes>
       </main>
