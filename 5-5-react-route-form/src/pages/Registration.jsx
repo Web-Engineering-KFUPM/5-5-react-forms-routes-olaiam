@@ -17,7 +17,7 @@ export default function Registration() {
     const nextErrors = {};
 
     // Email validation
-    if (!email.trim()) nextErrors.email = "Email is required";
+    if (!email.trim()) nextErrors.email = "Enter a valid email address";
     else if (!(email.includes("@") && email.endsWith(".com")))
       nextErrors.email = "Enter a valid email address";
 
@@ -114,11 +114,17 @@ export default function Registration() {
 
         {/*Disable the submit button until all requirements met*/}
 
+        {/* 
         <button
           type="submit"
           className="btn"
           disabled={!email || !password || !gender}
         >
+          Register
+        </button>
+        */}
+
+        <button type="submit" className="btn">
           Register
         </button>
       </form>
